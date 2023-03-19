@@ -23,12 +23,14 @@ def encode():
 #str_encode is being returned to be able to run it through the decode function
 
 
-
-
-
 def decode(encoded_password):
-	pass
-
+	result = ''
+	for c in encoded_password:
+		if 3 <= int(c) <= 9:
+			result += str(int(c)-3)
+		else:
+			result += str(int(c)+7)
+	return result
 
 
 def menu(): #this is for the menu
@@ -45,7 +47,8 @@ def menu(): #this is for the menu
 		if option == 1:
 			encoded_password=encode()
 		if option ==2:
-			decode(encoded_password)
+			decoded_password = decode(encoded_password)
+			print(f"The encoded password is {encoded_password}, and the original password is {decoded_password}.")
 		if option ==3:
 			loop_continue=False
 
